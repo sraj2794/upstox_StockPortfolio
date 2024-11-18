@@ -16,7 +16,6 @@ protocol HoldingsViewModelType {
     var holdingsCount: Int { get }
     
     func setHoldings(_ holdings: [Holding])
-  //  func loadHoldings(from data: Data)
     func holding(at index: Int) -> HoldingCellViewModelType
     func fetchHoldings(completion: @escaping (Bool, Error?) -> Void)
 }
@@ -66,15 +65,6 @@ final class HoldingsViewModel: HoldingsViewModelType {
              return nil
          }
      }
-//    func loadHoldings(from data: Data) {
-//        let decoder = JSONDecoder()
-//        do {
-//            let holdingsData = try decoder.decode(HoldingsData.self, from: data)
-//            setHoldings(holdingsData.data.userHolding)
-//        } catch {
-//            print("Failed to decode holdings data: \(error.localizedDescription)")
-//        }
-//    }
     
     var currentValue: Double {
         return holdings.reduce(0) { $0 + ($1.ltp * Double($1.quantity)) }
